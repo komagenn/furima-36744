@@ -12,6 +12,8 @@
 |password confirmation |string     |null: false|
 |full_width_name       |string     |null: false|
 |katakana_name         |string     |null: false|
+|birthday              |date       |null: false|
+
 
 
 ## itemsテーブル
