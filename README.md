@@ -28,9 +28,9 @@ has_many : purchases
 |price            |integer       |null: false                   |
 |category_id      |integer       |null: false                   |
 |state_id         |integer       |null: false                   |
-|items postage_id |string        |null: false                   |
+|items postage_id |integer        |null: false                   |
 |prefecture_id    |integer       |null: false                   |
-|date_id          |string        |null: false                   |
+|date_id          |integer        |null: false                   |
 |user             |references    |null: false,foreign_key: true |
 
 belongs_to : user
@@ -49,13 +49,15 @@ has_one    : addresse
 
 ## addressesテーブル
 
-|Column        |Type       |Options                       |
-|postal_code   |string     |null: false                   |
-|prefecture_id |integer    |null: false                   |
-|city          |string     |null: false                   |
-|house_number  |string     |null: false                   |
-|building_name |string     |                              |
-|purchase      |references |null: false,foreign_key: true |
+|Column          |Type       |Options                       |
+|postal_code     |string     |null: false                   |
+|prefecture_id   |integer    |null: false                   |
+|city            |string     |null: false                   |
+|house_number    |string     |null: false                   |
+|building_name   |string     |                              |
+|telephone number|integer  |null: false                   |
+|purchase        |references |null: false,foreign_key: true |
+
 
 belongs_to : purchase
 
