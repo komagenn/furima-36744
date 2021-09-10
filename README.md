@@ -45,7 +45,7 @@ has_one    : purchase
 
 belongs_to : user
 belongs_to : item
-has_one    : addresse
+has_one    : address
 
 ## addressesテーブル
 
