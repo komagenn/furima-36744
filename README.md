@@ -10,9 +10,9 @@
 |email                 |string     |null: false|
 |encrypted_password    |string     |null: false|
 |full_width_first_name |string     |null: false|
-|kana_first_name       |string     |null: false|
+|first_name_kana       |string     |null: false|
 |full_width_last_name  |string     |null: false|
-|kana_last_name        |string     |null: false|
+|last_name_kana        |string     |null: false|
 |birthday              |date       |null: false|
 
 has_many : items
