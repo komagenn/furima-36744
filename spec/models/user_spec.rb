@@ -72,10 +72,8 @@ RSpec.describe User, type: :model do
     end
     it "emailが既に登録してあると登録できない" do
       @user.save
-      another_user = FactoryBot.build(:user)
-      another_user.email = @user.email
+      another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      binding.pry
       expect(another_user.errors.full_messages).to include("Email is invalid")
     end
     it "emailに@が含まれていないと登録できない" do
@@ -83,5 +81,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Email is invalid")
     end
+    
+
   end
 end

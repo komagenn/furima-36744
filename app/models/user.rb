@@ -15,6 +15,6 @@ class User < ApplicationRecord
          validates :first_name_kana, format: {with: /\A[ァ-ヶー－]+\z/, message: "Input full-width katakana characters"}
          validates :last_name_kana, format: {with: /\A[ァ-ヶー－]+\z/,message: "Input full-width katakana characters"} 
      end
-         validates :email, {format: { with: /@.+/}, uniqueness: { case_sensitive: false }}
+         validates :email, {format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }}
          validates :password, presence: true, format: {with: /[a-z\d]{6,}/i }, confirmation: true
   end
