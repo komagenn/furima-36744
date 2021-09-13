@@ -5,17 +5,17 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
  end
   describe "ユーザー新規登録" do
-   #context `新規登録できるとき` do
-    it 'nicknameとemailとpasswordとpassword_confirmationとbirthdayとfull_with_nameとname_kanaが存在すれば登録できる' do
+   context "新規登録できるとき" do
+    it "nicknameとemailとpasswordとpassword_confirmationとbirthdayとfull_with_nameとname_kanaが存在すれば登録できる" do
       expect(@user).to be_valid
     end
-    it 'passwordとpassword_confirmationが6文字以上であれば登録できる' do
+    it "passwordとpassword_confirmationが6文字以上であれば登録できる" do
       @user.password = '00a000'
       @user.password_confirmation = '00a000'
       expect(@user).to be_valid
     end
-   #end
-   #context '新規登録できないとき' do
+   end
+   context "新規登録できないとき" do
     it "nick_nameが空では登録できない" do
       @user.nick_name = ''
       @user.valid?
@@ -24,7 +24,6 @@ RSpec.describe User, type: :model do
     it "英語のみのパスワードでは登録できない" do
       @user.password = 'aaaaaa'
       @user.valid?
-      binding.pry
       expect(@user.errors.full_messages).to include("Password is invalid")
     end
     it "数字のみのパスワードでは登録できない" do
@@ -89,6 +88,6 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name kana Input full-width katakana characters")
     end
   
-   #end
+   end
   end
 end
