@@ -8,11 +8,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nick_name, :full_width_first_name, :full_width_last_name, :first_name_kana, :last_name_kana, :birthday])
   end
 
-  def sign_up_params
-    params.permit(:nic_kname, :full_width_first_name, :last_name_kana, :first_name_kana)
-  end
-
-
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|

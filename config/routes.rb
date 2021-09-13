@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   root to: 'items#index'
  
 
-  resources :items do
+  resources :items, only: :index
 
   end
-  resources :user ,only: :index
-end
+  #resources :user ,only: :index
 
