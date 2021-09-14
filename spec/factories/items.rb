@@ -9,5 +9,10 @@ FactoryBot.define do
     shipping_id   {'2'}
     prefecture_id {'2'}
     delivery_id   {'2'}    
+   user
+
+   after(:build) do |message|
+    message.image.attach(io: File.open('public/test_image.png'), filename: 'test_image.png')
+  end
   end
 end
