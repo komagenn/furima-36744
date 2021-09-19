@@ -3,10 +3,9 @@ class PurchasesController < ApplicationController
   before_action :index_create, only: [:index, :create]
   def index
     @purchase_address = PurchaseAddress.new
-    @item = Item.find(params[:item_id])
-   redirect_to root_path unless current_user == @item_user
-    
-    
+   if @item.purchase.present?
+      redirect_to root_path
+   end
   end
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
@@ -38,4 +37,3 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 end
-   
