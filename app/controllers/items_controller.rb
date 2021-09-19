@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update,:create, :destroy]
   before_action :set_item, only: [:show, :edit,:update,:destroy]
   before_action :set_destory, only: [:edit, :destroy]
   
 
   def index
-    @items = Item.order(id: "DESC")
-
+    @items= Item.order(id: "DESC")
+    
   end
 
   def new
@@ -25,7 +25,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+    if @item.purchase.present?
+      redirect_to root_path
+    end
   end
   def update
      if @item.update(item_params)
