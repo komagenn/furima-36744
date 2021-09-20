@@ -7,6 +7,9 @@ class PurchasesController < ApplicationController
    if @item.purchase.present?
       redirect_to root_path
    end
+      @item.purchase
+      redirect_to root_path
+
   end
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
@@ -39,7 +42,7 @@ class PurchasesController < ApplicationController
   end
 
   def no_edit
-    if @item.user_id != current_user.id || @item.purchase != nil #　コードを追加
+    if @item.user_id != current_user.id || @item.purchase != nil 
       redirect_to root_path
     end
   end
