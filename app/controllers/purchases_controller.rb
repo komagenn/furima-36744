@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :index_create, only: [:index, :create]
-  before_action :no_edit, only: [:edit, :update, :destroy]
+  before_action :no_edit, only: [:index, :edit, :update, :destroy]
   def index
     @purchase_address = PurchaseAddress.new
    if @item.purchase.present?
