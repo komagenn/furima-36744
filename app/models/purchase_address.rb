@@ -10,8 +10,6 @@ purclass PurchaseAddress
     validates :token
     validates :user_id
     validates :item_id
-
-
   end
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
 
