@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :index_create, only: [:index, :create]
+  before_action :no_edit, only: [:edit, :update, :destroy]
   def index
     @purchase_address = PurchaseAddress.new
    if @item.purchase.present?
@@ -35,5 +36,11 @@ class PurchasesController < ApplicationController
   end
   def index_create
     @item = Item.find(params[:item_id])
+  end
+
+  def no_edit
+    if @item.user_id != current_user.id || @item.purchase != nil #　コードを追加
+      redirect_to root_path
+    end
   end
 end

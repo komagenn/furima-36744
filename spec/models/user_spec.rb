@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  
  before do
     @user = FactoryBot.build(:user)
  end
@@ -9,6 +10,7 @@ RSpec.describe User, type: :model do
     it "nicknameとemailとpasswordとpassword_confirmationとbirthdayとfull_with_nameとname_kanaが存在すれば登録できる" do
       expect(@user).to be_valid
     end
+
     it "passwordとpassword_confirmationが6文字以上であれば登録できる" do
       @user.password = '00a000'
       @user.password_confirmation = '00a000'
@@ -21,23 +23,16 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Nick name can't be blank")
     end
-    it "英語のみのパスワードでは登録できない" do
-      @user.password = 'aaaaaa'
+  
+    it "英語のみ・数字のみ・全角文字を含むpasswordでは登録できない" do
+      @user.password = 'aaaaaa','111111','111AAA'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
     end
-    it "数字のみのパスワードでは登録できない" do
-      @user.password = '111111'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
-    end
-    it "全角文字を含むパスワードでは登録できない" do
-      @user.password = '111AAA'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
-    end
-    it "パスワードとパスワード(確認用)が不一致だと登録できない" do
-      @user.password_confirmation = ''
+   
+    it "passwordとpassword_confirmationが不一致だと登録できない" do
+      @user.password = '00a000'
+      @user.password_confirmation = '00aaaa'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
