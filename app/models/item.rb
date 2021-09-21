@@ -19,7 +19,6 @@ class Item < ApplicationRecord
         validates :price, inclusion:{in:300..99999999}
     end
     validates :price, numericality: { with: /\A[0-9]+\z/}
-   
     validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :status_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :shipping_id, numericality: { other_than: 1 , message: "can't be blank"}
